@@ -1,0 +1,172 @@
+2020/03/06 16:14:27.588 INFO    AQSOwnerCheckIn.WebApiApplication [Application_Start] - Application was initiated.
+2020/03/06 16:14:29.497 INFO    AQSOwnerCheckIn.WebApiConfig [Register] - Method called.
+2020/03/06 16:14:29.523 DEBUG   AQSOwnerCheckIn.InforConfig [Register] - Method called.
+2020/03/06 16:14:29.604 ERROR   AQSOwnerCheckIn.InforConfig [Register] - Invalid URI: The format of the URI could not be determined.
+2020/03/06 16:15:45.598 INFO    AQSOwnerCheckIn.WebApiApplication [Application_Start] - Application was initiated.
+2020/03/06 16:15:46.899 INFO    AQSOwnerCheckIn.WebApiConfig [Register] - Method called.
+2020/03/06 16:15:46.918 DEBUG   AQSOwnerCheckIn.InforConfig [Register] - Method called.
+2020/03/06 16:15:53.580 DEBUG   AQSOwnerCheckIn.InforConfig [LoadConfigs] - Method called.
+2020/03/06 16:15:54.435 DEBUG   AQSOwnerCheckIn.Controllers.AuthenticationController+<Login>d__0 [MoveNext] - Method called.
+2020/03/06 16:15:54.442 INFO    AQSOwnerCheckIn.Controllers.AuthenticationController+<Login>d__0 [MoveNext] - Login attempt made by username: hansen8.
+2020/03/06 16:15:54.443 INFO    AQSOwnerCheckIn.Services.AuthenticationService+<LoginIpsUser>d__2 [MoveNext] - Method called.
+2020/03/06 16:15:55.015 INFO    AQSOwnerCheckIn.Services.AuthenticationService+<LoginIpsUser>d__2 [MoveNext] - IPS User hansen8 logged in successfully.
+2020/03/06 16:16:58.593 DEBUG   AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Method called.
+2020/03/06 16:16:58.594 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Called by (hansen8,1000)
+2020/03/06 16:16:58.598 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Method called.
+2020/03/06 16:16:58.606 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Execute SQL query: SELECT C.CNTCTKEY FROM RESOURCES.CONTACT C INNER JOIN RESOURCES.CNTCTID CNT ON CNT.IDKEY = C.IDKEY WHERE CNT.NAMELAST LIKE '%@CRITERIA'
+2020/03/06 16:16:59.116 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - 200 Success response sent.
+2020/03/06 16:18:25.412 INFO    AQSOwnerCheckIn.WebApiApplication [Application_Start] - Application was initiated.
+2020/03/06 16:18:26.308 INFO    AQSOwnerCheckIn.WebApiConfig [Register] - Method called.
+2020/03/06 16:18:26.321 DEBUG   AQSOwnerCheckIn.InforConfig [Register] - Method called.
+2020/03/06 16:18:26.579 DEBUG   AQSOwnerCheckIn.InforConfig [LoadConfigs] - Method called.
+2020/03/06 16:18:27.014 DEBUG   AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Method called.
+2020/03/06 16:18:27.016 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - 401 Unauthorized response sent.
+2020/03/06 16:20:38.545 INFO    AQSOwnerCheckIn.WebApiApplication [Application_Start] - Application was initiated.
+2020/03/06 16:20:40.938 INFO    AQSOwnerCheckIn.WebApiConfig [Register] - Method called.
+2020/03/06 16:20:40.953 DEBUG   AQSOwnerCheckIn.InforConfig [Register] - Method called.
+2020/03/06 16:20:41.328 DEBUG   AQSOwnerCheckIn.InforConfig [LoadConfigs] - Method called.
+2020/03/06 16:20:56.142 DEBUG   AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Method called.
+2020/03/06 16:20:56.145 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Called by (,0)
+2020/03/06 16:20:56.147 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Method called.
+2020/03/06 16:20:56.150 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Execute SQL query: SELECT C.CNTCTKEY FROM RESOURCES.CONTACT C INNER JOIN RESOURCES.CNTCTID CNT ON CNT.IDKEY = C.IDKEY WHERE CNT.NAMELAST LIKE '%@CRITERIA%'
+2020/03/06 16:20:56.541 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - 200 Success response sent.
+2020/03/06 16:21:14.713 INFO    AQSOwnerCheckIn.WebApiApplication [Application_Start] - Application was initiated.
+2020/03/06 16:21:16.491 INFO    AQSOwnerCheckIn.WebApiConfig [Register] - Method called.
+2020/03/06 16:21:16.508 DEBUG   AQSOwnerCheckIn.InforConfig [Register] - Method called.
+2020/03/06 16:21:16.848 DEBUG   AQSOwnerCheckIn.InforConfig [LoadConfigs] - Method called.
+2020/03/06 16:21:26.986 DEBUG   AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Method called.
+2020/03/06 16:21:27.207 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Called by (,0)
+2020/03/06 16:21:27.221 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Method called.
+2020/03/06 16:21:27.222 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Execute SQL query: SELECT C.CNTCTKEY FROM RESOURCES.CONTACT C INNER JOIN RESOURCES.CNTCTID CNT ON CNT.IDKEY = C.IDKEY WHERE CNT.NAMELAST LIKE '%@CRITERIA%'
+2020/03/06 16:21:27.604 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - 200 Success response sent.
+2020/03/06 16:21:37.606 DEBUG   AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Method called.
+2020/03/06 16:21:37.612 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Called by (,0)
+2020/03/06 16:21:37.612 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Method called.
+2020/03/06 16:21:37.613 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Execute SQL query: SELECT C.CNTCTKEY FROM RESOURCES.CONTACT C INNER JOIN RESOURCES.CNTCTID CNT ON CNT.IDKEY = C.IDKEY WHERE CNT.NAMELAST LIKE '%@CRITERIA%'
+2020/03/06 16:21:54.679 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - 200 Success response sent.
+2020/03/06 16:23:44.810 INFO    AQSOwnerCheckIn.WebApiApplication [Application_Start] - Application was initiated.
+2020/03/06 16:23:46.032 INFO    AQSOwnerCheckIn.WebApiConfig [Register] - Method called.
+2020/03/06 16:23:46.049 DEBUG   AQSOwnerCheckIn.InforConfig [Register] - Method called.
+2020/03/06 16:23:46.310 DEBUG   AQSOwnerCheckIn.InforConfig [LoadConfigs] - Method called.
+2020/03/06 16:23:46.789 DEBUG   AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Method called.
+2020/03/06 16:23:46.791 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Called by (,0)
+2020/03/06 16:23:46.797 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Method called.
+2020/03/06 16:23:46.799 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Execute SQL query: SELECT C.CNTCTKEY FROM RESOURCES.CONTACT C INNER JOIN RESOURCES.CNTCTID CNT ON CNT.IDKEY = C.IDKEY WHERE CNT.NAMELAST LIKE '%@CRITERIA%'
+2020/03/06 16:23:47.187 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - 200 Success response sent.
+2020/03/06 16:24:34.514 INFO    AQSOwnerCheckIn.WebApiApplication [Application_Start] - Application was initiated.
+2020/03/06 16:24:35.636 INFO    AQSOwnerCheckIn.WebApiConfig [Register] - Method called.
+2020/03/06 16:24:35.652 DEBUG   AQSOwnerCheckIn.InforConfig [Register] - Method called.
+2020/03/06 16:24:35.927 DEBUG   AQSOwnerCheckIn.InforConfig [LoadConfigs] - Method called.
+2020/03/06 16:24:36.322 DEBUG   AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Method called.
+2020/03/06 16:24:36.323 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Called by (,0)
+2020/03/06 16:24:36.328 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Method called.
+2020/03/06 16:24:36.330 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Execute SQL query: SELECT C.CNTCTKEY FROM RESOURCES.CONTACT C INNER JOIN RESOURCES.CNTCTID CNT ON CNT.IDKEY = C.IDKEY WHERE CNT.NAMELAST LIKE @CRITERIA
+2020/03/06 16:24:36.709 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - 200 Success response sent.
+2020/03/06 16:25:04.080 INFO    AQSOwnerCheckIn.WebApiApplication [Application_Start] - Application was initiated.
+2020/03/06 16:25:04.991 INFO    AQSOwnerCheckIn.WebApiConfig [Register] - Method called.
+2020/03/06 16:25:05.004 DEBUG   AQSOwnerCheckIn.InforConfig [Register] - Method called.
+2020/03/06 16:25:05.259 DEBUG   AQSOwnerCheckIn.InforConfig [LoadConfigs] - Method called.
+2020/03/06 16:25:05.660 DEBUG   AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Method called.
+2020/03/06 16:25:05.663 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Called by (,0)
+2020/03/06 16:25:05.668 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Method called.
+2020/03/06 16:25:05.670 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Execute SQL query: SELECT C.CNTCTKEY FROM RESOURCES.CONTACT C INNER JOIN RESOURCES.CNTCTID CNT ON CNT.IDKEY = C.IDKEY WHERE CNT.NAMELAST = 'PINEDA'
+2020/03/06 16:25:06.045 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - 200 Success response sent.
+2020/03/06 16:27:23.746 INFO    AQSOwnerCheckIn.WebApiApplication [Application_Start] - Application was initiated.
+2020/03/06 16:27:24.592 INFO    AQSOwnerCheckIn.WebApiConfig [Register] - Method called.
+2020/03/06 16:27:24.606 DEBUG   AQSOwnerCheckIn.InforConfig [Register] - Method called.
+2020/03/06 16:27:24.862 DEBUG   AQSOwnerCheckIn.InforConfig [LoadConfigs] - Method called.
+2020/03/06 16:27:25.232 DEBUG   AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Method called.
+2020/03/06 16:27:25.234 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Called by (,0)
+2020/03/06 16:27:25.238 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Method called.
+2020/03/06 16:27:25.240 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Execute SQL query: SELECT C.CNTCTKEY FROM RESOURCES.CONTACT C INNER JOIN RESOURCES.CNTCTID CNT ON CNT.IDKEY = C.IDKEY WHERE CNT.NAMELAST LIKE '%' + @CRITERIA + '%'
+2020/03/06 16:27:25.633 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - 200 Success response sent.
+2020/03/06 16:27:45.393 DEBUG   AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Method called.
+2020/03/06 16:27:45.394 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Called by (,0)
+2020/03/06 16:27:45.394 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Method called.
+2020/03/06 16:27:45.394 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Execute SQL query: SELECT C.CNTCTKEY FROM RESOURCES.CONTACT C INNER JOIN RESOURCES.CNTCTID CNT ON CNT.IDKEY = C.IDKEY WHERE CNT.NAMELAST LIKE '%' + @CRITERIA + '%'
+2020/03/06 16:27:51.478 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - 200 Success response sent.
+2020/03/06 16:28:23.052 INFO    AQSOwnerCheckIn.WebApiApplication [Application_Start] - Application was initiated.
+2020/03/06 16:28:23.844 INFO    AQSOwnerCheckIn.WebApiConfig [Register] - Method called.
+2020/03/06 16:28:23.855 DEBUG   AQSOwnerCheckIn.InforConfig [Register] - Method called.
+2020/03/06 16:28:24.108 DEBUG   AQSOwnerCheckIn.InforConfig [LoadConfigs] - Method called.
+2020/03/06 16:28:24.462 DEBUG   AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Method called.
+2020/03/06 16:28:24.464 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Called by (,0)
+2020/03/06 16:28:24.469 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Method called.
+2020/03/06 16:28:24.470 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Execute SQL query: SELECT C.CNTCTKEY FROM RESOURCES.CONTACT C INNER JOIN RESOURCES.CNTCTID CNT ON CNT.IDKEY = C.IDKEY WHERE CNT.NAMELAST LIKE '%' + @CRITERIA + '%'
+2020/03/06 16:28:24.861 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - 200 Success response sent.
+2020/03/06 16:29:28.838 INFO    AQSOwnerCheckIn.WebApiApplication [Application_Start] - Application was initiated.
+2020/03/06 16:29:29.664 INFO    AQSOwnerCheckIn.WebApiConfig [Register] - Method called.
+2020/03/06 16:29:29.676 DEBUG   AQSOwnerCheckIn.InforConfig [Register] - Method called.
+2020/03/06 16:29:29.942 DEBUG   AQSOwnerCheckIn.InforConfig [LoadConfigs] - Method called.
+2020/03/06 16:29:30.316 DEBUG   AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Method called.
+2020/03/06 16:29:30.318 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Called by (,0)
+2020/03/06 16:29:30.322 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Method called.
+2020/03/06 16:29:30.323 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Execute SQL query: SELECT C.CNTCTKEY FROM RESOURCES.CONTACT C INNER JOIN RESOURCES.CNTCTID CNT ON CNT.IDKEY = C.IDKEY WHERE CNT.NAMELAST LIKE '%' + @CRITERIA + '%'
+2020/03/06 16:29:30.706 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - 200 Success response sent.
+2020/03/06 16:30:17.444 INFO    AQSOwnerCheckIn.WebApiApplication [Application_Start] - Application was initiated.
+2020/03/06 16:30:18.297 INFO    AQSOwnerCheckIn.WebApiConfig [Register] - Method called.
+2020/03/06 16:30:18.309 DEBUG   AQSOwnerCheckIn.InforConfig [Register] - Method called.
+2020/03/06 16:30:18.578 DEBUG   AQSOwnerCheckIn.InforConfig [LoadConfigs] - Method called.
+2020/03/06 16:30:18.964 DEBUG   AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Method called.
+2020/03/06 16:30:18.966 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Called by (,0)
+2020/03/06 16:30:18.971 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Method called.
+2020/03/06 16:30:18.973 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Execute SQL query: SELECT C.CNTCTKEY FROM RESOURCES.CONTACT C INNER JOIN RESOURCES.CNTCTID CNT ON CNT.IDKEY = C.IDKEY WHERE CNT.NAMELAST LIKE '%' + @CRITERIA + '%'
+2020/03/06 16:30:19.359 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - 200 Success response sent.
+2020/03/06 16:30:49.927 INFO    AQSOwnerCheckIn.WebApiApplication [Application_Start] - Application was initiated.
+2020/03/06 16:30:50.816 INFO    AQSOwnerCheckIn.WebApiConfig [Register] - Method called.
+2020/03/06 16:30:50.828 DEBUG   AQSOwnerCheckIn.InforConfig [Register] - Method called.
+2020/03/06 16:30:51.096 DEBUG   AQSOwnerCheckIn.InforConfig [LoadConfigs] - Method called.
+2020/03/06 16:30:51.466 DEBUG   AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Method called.
+2020/03/06 16:30:51.467 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Called by (,0)
+2020/03/06 16:30:51.472 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Method called.
+2020/03/06 16:30:51.473 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Execute SQL query: SELECT C.CNTCTKEY FROM RESOURCES.CONTACT C INNER JOIN RESOURCES.CNTCTID CNT ON CNT.IDKEY = C.IDKEY WHERE CNT.NAMELAST = @CRITERIA
+2020/03/06 16:30:51.857 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - 200 Success response sent.
+2020/03/06 16:31:15.725 INFO    AQSOwnerCheckIn.WebApiApplication [Application_Start] - Application was initiated.
+2020/03/06 16:31:16.520 INFO    AQSOwnerCheckIn.WebApiConfig [Register] - Method called.
+2020/03/06 16:31:16.530 DEBUG   AQSOwnerCheckIn.InforConfig [Register] - Method called.
+2020/03/06 16:31:16.797 DEBUG   AQSOwnerCheckIn.InforConfig [LoadConfigs] - Method called.
+2020/03/06 16:31:17.159 DEBUG   AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Method called.
+2020/03/06 16:31:17.160 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Called by (,0)
+2020/03/06 16:31:17.165 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Method called.
+2020/03/06 16:31:17.166 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Execute SQL query: SELECT C.CNTCTKEY FROM RESOURCES.CONTACT C INNER JOIN RESOURCES.CNTCTID CNT ON CNT.IDKEY = C.IDKEY WHERE CNT.NAMELAST = 'PINEDA'
+2020/03/06 16:31:17.546 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - 200 Success response sent.
+2020/03/06 16:32:29.492 INFO    AQSOwnerCheckIn.WebApiApplication [Application_Start] - Application was initiated.
+2020/03/06 16:32:30.363 INFO    AQSOwnerCheckIn.WebApiConfig [Register] - Method called.
+2020/03/06 16:32:30.377 DEBUG   AQSOwnerCheckIn.InforConfig [Register] - Method called.
+2020/03/06 16:32:30.651 DEBUG   AQSOwnerCheckIn.InforConfig [LoadConfigs] - Method called.
+2020/03/06 16:32:31.016 DEBUG   AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Method called.
+2020/03/06 16:32:31.018 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Called by (,0)
+2020/03/06 16:32:31.023 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Method called.
+2020/03/06 16:32:31.024 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Execute SQL query: SELECT C.CNTCTKEY 'ContactKey' FROM RESOURCES.CONTACT C INNER JOIN RESOURCES.CNTCTID CNT ON CNT.IDKEY = C.IDKEY WHERE CNT.NAMELAST = @CRITERIA
+2020/03/06 16:32:31.388 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - 200 Success response sent.
+2020/03/06 16:35:58.940 INFO    AQSOwnerCheckIn.WebApiApplication [Application_Start] - Application was initiated.
+2020/03/06 16:35:59.799 INFO    AQSOwnerCheckIn.WebApiConfig [Register] - Method called.
+2020/03/06 16:35:59.811 DEBUG   AQSOwnerCheckIn.InforConfig [Register] - Method called.
+2020/03/06 16:36:00.068 DEBUG   AQSOwnerCheckIn.InforConfig [LoadConfigs] - Method called.
+2020/03/06 16:36:00.425 DEBUG   AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Method called.
+2020/03/06 16:36:00.426 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Called by (,0)
+2020/03/06 16:36:00.430 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Method called.
+2020/03/06 16:36:00.432 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Execute SQL query: SELECT C.CNTCTKEY 'ContactKey' FROM RESOURCES.CONTACT C INNER JOIN RESOURCES.CNTCTID CNT ON CNT.IDKEY = C.IDKEY WHERE CNT.NAMELAST = @CRITERIA
+2020/03/06 16:36:00.809 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - 200 Success response sent.
+2020/03/06 16:36:11.632 DEBUG   AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Method called.
+2020/03/06 16:36:11.632 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Called by (,0)
+2020/03/06 16:36:11.633 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Method called.
+2020/03/06 16:36:11.633 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Execute SQL query: SELECT C.CNTCTKEY 'ContactKey' FROM RESOURCES.CONTACT C INNER JOIN RESOURCES.CNTCTID CNT ON CNT.IDKEY = C.IDKEY WHERE CNT.NAMELAST = @CRITERIA
+2020/03/06 16:36:11.709 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - 200 Success response sent.
+2020/03/06 16:36:43.947 INFO    AQSOwnerCheckIn.WebApiApplication [Application_Start] - Application was initiated.
+2020/03/06 16:36:44.828 INFO    AQSOwnerCheckIn.WebApiConfig [Register] - Method called.
+2020/03/06 16:36:44.840 DEBUG   AQSOwnerCheckIn.InforConfig [Register] - Method called.
+2020/03/06 16:36:45.105 DEBUG   AQSOwnerCheckIn.InforConfig [LoadConfigs] - Method called.
+2020/03/06 16:36:45.468 DEBUG   AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Method called.
+2020/03/06 16:36:45.470 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - Called by (,0)
+2020/03/06 16:36:45.475 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Method called.
+2020/03/06 16:36:45.477 DEBUG   AQSOwnerCheckIn.Services.SampleService+<SampleQuery>d__0 [MoveNext] - Execute SQL query: SELECT C.CNTCTKEY 'ContactKey' FROM RESOURCES.CONTACT C INNER JOIN RESOURCES.CNTCTID CNT ON CNT.IDKEY = C.IDKEY WHERE CNT.NAMELAST LIKE '%' + @CRITERIA + '%'
+2020/03/06 16:36:45.859 INFO    AQSOwnerCheckIn.Controllers.SampleController+<Search>d__0 [MoveNext] - 200 Success response sent.
+2020/03/06 16:45:57.881 INFO    AQSOwnerCheckIn.WebApiApplication [Application_Start] - Application was initiated.
+2020/03/06 16:45:58.757 INFO    AQSOwnerCheckIn.WebApiConfig [Register] - Method called.
+2020/03/06 16:45:58.767 DEBUG   AQSOwnerCheckIn.InforConfig [Register] - Method called.
+2020/03/06 16:45:58.784 ERROR   AQSOwnerCheckIn.InforConfig [Register] - Invalid URI: The format of the URI could not be determined.
+2020/03/06 16:46:12.627 INFO    AQSOwnerCheckIn.WebApiApplication [Application_Start] - Application was initiated.
+2020/03/06 16:46:12.664 INFO    AQSOwnerCheckIn.WebApiConfig [Register] - Method called.
+2020/03/06 16:46:12.689 DEBUG   AQSOwnerCheckIn.InforConfig [Register] - Method called.
+2020/03/06 16:46:12.704 ERROR   AQSOwnerCheckIn.InforConfig [Register] - Invalid URI: The format of the URI could not be determined.
