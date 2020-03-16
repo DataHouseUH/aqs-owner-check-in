@@ -5,6 +5,7 @@
         <script src="kiosk.js"></script>
         <script src="kiosk.ts"></script>
         <link rel="stylesheet" href="kiosk.css">
+        <link href="css/bootstrap.min.css" rel="stylesheet" />
     </head>
     <body ng-app="kioskSigninApp">
         <!-- Sign-in form -->
@@ -25,7 +26,9 @@
                 <hr>
                 
                 <label>Phone Number</label>
-                <input type="text" name="phone" ng-model="phoneNum" placeholder="(___) ___-____" required/>
+                <input type="text" name="phone1" ng-model="phoneArea" placeholder ="(___)" required/>
+                <input type="text" name="phone2" ng-model="phoneFirst" placeholder ="___" required/>
+                <input type="text" name="phone3" ng-model="phoneLast" placeholder ="____" required/>
                 <div ng-messages="signinForm.required.$error" style="color:brown" role="alert">     <!-- Required field error message -->
                     <div ng-message="required">This field is required.</div>
                 </div>
