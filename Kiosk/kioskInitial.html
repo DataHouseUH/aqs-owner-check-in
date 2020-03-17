@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+        <script src="kiosk.js"></script>
+        <script src="kiosk.ts"></script>
+        <link rel="stylesheet" href="kiosk.css">
+    </head>
+    <body ng-app="startApp">
+        <!-- Welcome screen -->
+        <div ng-controller="initialController">
+            <h1>Aloha!</h1>
+            <h1>Welcome to<br>Animal Quarantine<br>Airport Station</h1>
+            <button ng-click="clicked()">Start</button>
+        </div>
+    </body>
+</html>
