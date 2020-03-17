@@ -21,6 +21,12 @@ node_modules
 # Ignore ClientProxies folder
 ClientProxies/**
 
+# Ignore Visuall Studio 
+.vs/** 
+
+# Ignore UpgradeLog
+UpgradeLog.htm
+
 # Ignore the AppSettings and Connection Settings
 AppSettings.Local-Test.config
 ConnectionStrings.Local-Test.config
