@@ -18,6 +18,13 @@ node_modules
 !*/App_Data/placeholder.txt
 */Web.*.config
 
+# Ignore ClientProxies folder
+ClientProxies/**
+
+# Ignore the AppSettings and Connection Settings
+AppSettings.Local-Test.config
+ConnectionStrings.Local-Test.config
+
 # Ignore NuGet Packages
 *.nupkg
 
