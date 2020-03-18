@@ -1,4 +1,10 @@
 
+var VLogin = angular.module('startApp', []);
+VLogin.controller('initialController', ['$scope', function($scope) {
+  $scope.clicked = function() {
+    window.location = "\kioskSignin.html";
+  }
+}]);
 
 var submit = angular.module('kioskSigninApp', []);
 submit.controller('signinController', ['$scope', function($scope) {
