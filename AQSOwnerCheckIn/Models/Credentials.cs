@@ -4,11 +4,18 @@ namespace AQSOwnerCheckIn.Models
 {
     public class Credentials
     {
-        [JsonProperty(PropertyName = "username")]
-        public string Username;
+        [JsonProperty(PropertyName = "FirstName")]
+        public string FirstName;
 
-        [JsonProperty(PropertyName = "password")]
-        public string Password;
+        [JsonProperty(PropertyName = "LastName")]
+        public string LastName;
+
+        [JsonProperty(PropertyName = "PhoneNumber")]
+        public string PhoneNumber;
+
+
+
+
 
         public Credentials() { }
     }

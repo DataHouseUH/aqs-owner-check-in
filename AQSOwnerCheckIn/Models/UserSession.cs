@@ -13,39 +13,29 @@ namespace AQSOwnerCheckIn.Models
     [Serializable]
     public class UserSession
     {
-        [JsonProperty(PropertyName = "contactKey")]
-        public int ContactKey { get; set; }
 
-        [JsonProperty(PropertyName = "identityKey")]
-        public int IdentityKey { get; set; }
-        
-        [JsonProperty(PropertyName = "webUserKey")]
-        public int WebUserKey { get; set; }
 
-        [JsonProperty(PropertyName = "ipsUserKey")]
-        public int IpsUserKey { get; set; }
-        
-        [JsonProperty(PropertyName = "username")]
+        [JsonProperty(PropertyName = "userID")]
         public string Username { get; set; }
-        
+
         [JsonProperty(PropertyName = "firstName")]
         public string FirstName { get; set; }
-        
+
         [JsonProperty(PropertyName = "lastName")]
         public string LastName { get; set; }
-        
-        [JsonProperty(PropertyName = "ticket")]
-        public string Ticket { get; set; }
+
+        [JsonProperty(PropertyName = "PhoneNumber")]
+        public string PhoneNumber { get; set; }
 
         [JsonProperty(PropertyName = "access")]
-        public string[] Access 
+        public string[] Access
         {
             get
             {
                 var access = new List<string>();
                 // Add access
                 return access.ToArray();
-            } 
+            }
         }
 
         [JsonProperty(PropertyName = "defaultState")]
@@ -57,8 +47,8 @@ namespace AQSOwnerCheckIn.Models
             }
         }
 
-        public UserSessionRole[] Roles { get; set; }
-        
+
+
         public UserSession()
         {
             Username = "";

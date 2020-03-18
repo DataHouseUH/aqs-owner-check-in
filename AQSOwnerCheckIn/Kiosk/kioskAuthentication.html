@@ -11,21 +11,27 @@
         <h1>Animal Quarantine<br>Airport Station<br>Kiosk</h1>
         <div ng-controller="authController">
             <form name="authForm">
-                <label>Username or email address</label>
+                <label>first name</label>
                 <input type="text" ng-model="username" required/>
                 <div ng-messages="signinForm.required.$error" style="color:brown" role="alert">     <!-- Required field error message -->
                     <div ng-message="required">This field is required.</div>
                 </div>
                 <hr>
-                
-                <label>Password</label>
-                <input type="text" ng-model="pass" required/>
+              <label>last name</label>
+              <input type="text" ng-model="username" required/>
+              <div ng-messages="signinForm.required.$error" style="color:brown" role="alert">     <!-- Required field error message -->
+                <div ng-message="required">This field is required.</div>
+              </div>
+              <hr>
+
+                <label>Phone number</label>
+                <input type="text" ng-model="phone" required/>
                 <div ng-messages="signinForm.required.$error" style="color:brown" role="alert">     <!-- Required field error message -->
                     <div ng-message="required">This field is required.</div>
                 </div>
                 <hr>
-                
-                <button ng-click="clicked()">Sign in</button>
+
+                <button ng-click="clicked()">Submit</button>
             </form>
         </div>
     </body>

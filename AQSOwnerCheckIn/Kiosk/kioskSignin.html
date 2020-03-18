@@ -17,14 +17,14 @@
                 <div ng-messages="signinForm.required.$error" style="color:brown" role="alert">     <!-- Required field error message -->
                     <div ng-message="required">This field is required.</div>
                 </div>
-                
+
                 <label>First Name</label>
-                <input type="text" name="firsttname" ng-model="ownerFirst" ng-model-options="{getterSetter: true}" placeholder="Enter first name" required/>
+                <input type="text" name="firstname" ng-model="ownerFirst" ng-model-options="{getterSetter: true}" placeholder="Enter first name" required/>
                 <div ng-messages="signinForm.required.$error" style="color:brown" role="alert">     <!-- Required field error message -->
                     <div ng-message="required">This field is required.</div>
                 </div>
                 <hr>
-                
+
                 <label>Phone Number</label>
                 <input type="text" name="phone1" ng-model="phoneArea" placeholder ="(___)" required/>
                 <input type="text" name="phone2" ng-model="phoneFirst" placeholder ="___" required/>
@@ -33,21 +33,21 @@
                     <div ng-message="required">This field is required.</div>
                 </div>
                 <hr>
-                
+
                 <label>Email Address</label>
                 <input type="text" name="email" ng-model="emailAdd" placeholder="Enter email address" required/>
                 <div ng-messages="signinForm.required.$error" style="color:brown" role="alert">     <!-- Required field error message -->
                     <div ng-message="required">This field is required.</div>
                 </div>
                 <hr>
-                
+
                 <label>Pet Microchip Number</label>
                 <input type="text" name="microchip" ng-model="microchipNum" placeholder="Enter microchip number" required/>
                 <div ng-messages="signinForm.required.$error" style="color:brown" role="alert">     <!-- Required field error message -->
                     <div ng-message="required">This field is required.</div>
                 </div>
                 <hr>
-                
+
                 <button ng-click="clicked()">Submit</button>
                 </div>
             </form>
