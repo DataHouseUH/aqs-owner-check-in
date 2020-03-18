@@ -3,11 +3,11 @@
 var submit = angular.module('kioskSigninApp', []);
 submit.controller('signinController', ['$scope', function($scope) {
     $scope.clicked = function() {   // If Pre-qualified
-        var firstname = $scope.firstname;
-        var lastname = $scope.lastname;
-      var email = $scope.email;
-      var phone= $scope.phone1 + $scope.phone2 + $scope.phone3;
-      
+        var firstname = $scope.ownerFirst;
+        var lastname = $scope.ownerLast;
+      var email = $scope.emailAdd;
+      var phone= $scope.phoneArea + $scope.phoneFirst + $scope.phoneLast;
+
         window.location = "\kioskIsPrequal.html";
     }
     $scope.clicked = function() {   // If NOT Pre-qualified
