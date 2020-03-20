@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+        <script src="front.js"></script>
+        <script src="front.ts"></script>
+        <link rel="stylesheet" href="front.css">
+    </head>
+    <body>
+        <!-- Front display of queue -->
+        <h1>Mahalo for Waiting</h1>
+        <!-- Create the table-->
+        <div ng-app="frontApp" ng-controller="signInController">
+            <table>
+                <tr>
+                    <th>No.</th>
+                    <th>Last Inital, First Name</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <tr ng-repeat="owners in ownerArray">
+                        <td><label>{{owners.phoneLast}}</label></td>
+                        <td><label>{{owners.ownerLast},{owners.ownerFirst}}</label></td>
+                        <td><label>{{owners.status}}</label></td>
+                    </tr>  
+                </tr>
+            </table>  
+        </div>
+    </body>
+</html>
