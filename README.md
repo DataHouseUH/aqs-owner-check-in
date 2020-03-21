@@ -11,13 +11,12 @@ After cloning this project locally, you will need to download the packages that 
 > **Restore Packages in Visual Studio**
 > 
 > 1. Enable package restore and automatic checking (Tools / Options / NuGet Package Manager / General)
-> 2. Manage NuGet Packages For Solution
-> 3. Check the 'Allow NuGet to download missing packages' and 'Automatically check for missing packages during build in Visual Studio' checkboxes.
-> 4. Build Project
+> 2. Check the 'Allow NuGet to download missing packages' and 'Automatically check for missing packages during build in Visual Studio' checkboxes.
+> 3. Build Project
 
 > **Restore Packages in package.json**
 > 
-> 1. Type 'npm install' in terminal of choice (command prompt, git bash). Node must be installed in order for this to work. 
+> 1. Type 'npm install' in terminal. Must be able to run Unix commands, so git bash is best. If using Windows command prompt, you would have to update the script found in package.json to use del instead of rm. Node must be installed in order for this to work. 
 
 > **Add Client Proxies to Reference paths**
 >
