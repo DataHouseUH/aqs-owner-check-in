@@ -31,7 +31,7 @@ namespace AQSOwnerCheckIn.Controllers
         [HttpPost]
         // Change name of action. (Match the WebApiConfig)
         [ActionName("FindUser")]
-        public async Task<Response> Search()
+        public Response Search()
         {
             Logger.Debug("Method called.");
             var user = UserSession.GetCurrent();
