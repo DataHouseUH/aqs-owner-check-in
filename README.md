@@ -1,5 +1,7 @@
 # CIMP
 
+## Refer to this repository for latest updates on front-end development: https://github.com/christinebramos/aqs-frontend.git
+
 ## Description:
 
 ### Guys, please add gitignore. Contact Frendy if you have questions.
