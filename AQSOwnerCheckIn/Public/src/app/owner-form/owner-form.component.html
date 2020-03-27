@@ -1,0 +1,47 @@
+<h2>Please sign-in by entering the following:</h2>
+
+<div class="container">
+  <form>
+    <!-- Last Name -->
+    <div class="form-group">
+      <label for="lastname">Last Name</label>
+      <input type="text" class="form-control" id="lastname" required>
+      <div class="alert alert-danger">    <!-- TODO: Implement error message if input has been left blank after submission -->
+        This field is required
+      </div>
+    </div>
+
+    <!-- First Name -->
+    <div class="form-group">
+      <label for="firstname">First Name</label>
+      <input type="text" class="form-control" id="firstname" required>
+    </div>
+
+    <!-- Phone Number -->
+    <div class="form-group">
+      <label for="areaCode">Phone Number</label>
+      <input type="text" class="form-control" placeholder="+1" maxlength="3" id="areaCode" required>
+      <input type="text" class="form-control" placeholder="( _ _ _ )" maxlength="3" id="areaCode" required>
+      <input type="text" class="form-control" placeholder="_ _ _" maxlength="3" id="phone3" required>
+      <input type="text" class="form-control" placeholder="_ _ _ _" maxlength="4" id="phone4" required>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="text" class="form-control" id="email" required>
+    </div>
+
+    <!-- Pet Microchip-->
+    <div class="form-group">
+      <label for="microchip">Pet Microchip ID</label>
+      <input type="text" class="form-control" id="microchip">
+    </div>
+
+    <!-- Submit form -->
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+<router-outlet></router-outlet>
+

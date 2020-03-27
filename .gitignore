@@ -45,3 +45,6 @@ ConnectionStrings.Local-Test.config
 
 # Ignore public build folder (grunt uglify generates the files)
 */Public/build
+
+# Ignore dist folder
+*/dist/*
