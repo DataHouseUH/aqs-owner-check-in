@@ -90,5 +90,180 @@ namespace AQSOwnerCheckIn.Services
                 }
             }
         }
+
+        /// <summary>
+        /// FOR ALERTSCUSTOMMESSAGE
+        /// </summary>
+        /// <returns></returns>
+        public static TaskResult View_AlertsCustomMessage()
+        {
+            Logger.Debug(string.Format("Method called."));
+
+            // SQL QUERY
+            string coreQuery = "EXEC [KioskCheckIn].[View_AlertCustomMessage_Proc]";
+
+            using (var connection = new SqlConnection(InforConfig.IpsDatabaseConnectionString))
+            {
+                try
+                {
+                    // Call the query
+                    Logger.Debug(string.Format("Execute SQL query: {0}", coreQuery));
+                    var command = new SqlCommand(coreQuery, connection);
+
+                    // Open connection
+                    connection.Open();
+
+                    // Read data
+                    var reader = command.ExecuteReader();
+
+                    // Create variables to storage the data
+                    var AlertCustomMessageID = new List<int>();
+                    var Message = new List<string>();
+
+                    // Get data 
+                    while (reader.Read())
+                    {
+                        // Check if it is NULL or not, if not add it to our variable
+                        if (!(reader["AlertCustomMessageID"] is DBNull)) AlertCustomMessageID.Add(Convert.ToInt32(reader["AlertCustomMessageID"]));
+                        if (!(reader["Message"] is DBNull)) Message.Add(Convert.ToString(reader["Message"]));
+                    }
+
+                    // Select query successful
+                    reader.Close();
+
+                    // Display data
+                    var data = new
+                    {
+                        AlertCustomMessageID,
+                        Message
+                    };
+
+                    return TaskResult.Success(data);
+                }
+                catch (Exception e)
+                {
+                    // Log exception
+                    return TaskResult.Failure(e.Message, e.StackTrace);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public static TaskResult Update_AlertCustomMessage(KioskCheckInController.AlertCustomMessageCriteria ACMC)
+        {
+            Logger.Debug(string.Format("Method called."));
+
+            // SQL QUERY
+            string coreQuery = "EXEC [KioskCheckIn].[Update_AlertCustomMessage_Proc] @AlertCustomMessageID, @Message ";
+
+            using (var connection = new SqlConnection(InforConfig.IpsDatabaseConnectionString))
+            {
+                try
+                {
+                    // Call the query
+                    Logger.Debug(string.Format("Execute SQL query: {0}", coreQuery));
+                    var command = new SqlCommand(coreQuery, connection);
+                    command.Parameters.AddWithValue("@AlertCustomMessageID", ACMC.AlertCustomMessageID);
+                    command.Parameters.AddWithValue("@Message", ACMC.Message);
+
+                    // Open connection
+                    connection.Open();
+
+                    // Read data
+                    var reader = command.ExecuteReader();
+
+                    // Create variables to storage the data
+                    var AlertCustomMessageID = new List<int>();
+                    var Message = new List<string>();
+
+                    // Get data 
+                    while (reader.Read())
+                    {
+                        // Check if it is NULL or not, if not add it to our variable
+                        if (!(reader["AlertCustomMessageID"] is DBNull)) AlertCustomMessageID.Add(Convert.ToInt32(reader["AlertCustomMessageID"]));
+                        if (!(reader["Message"] is DBNull)) Message.Add(Convert.ToString(reader["Message"]));
+                    }
+
+                    // Select query successful
+                    reader.Close();
+
+                    // Display data
+                    var data = new
+                    {
+                        AlertCustomMessageID,
+                        Message
+                    };
+
+                    return TaskResult.Success(data);
+                }
+                catch (Exception e)
+                {
+                    // Log exception
+                    return TaskResult.Failure(e.Message, e.StackTrace);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public static TaskResult Insert_AlertCustomMessage(KioskCheckInController.AlertCustomMessageCriteria ACMC)
+        {
+            Logger.Debug(string.Format("Method called."));
+
+            // SQL QUERY
+            string coreQuery = "EXEC [KioskCheckIn].[Create_AlertCustomMessage_Proc] @Message ";
+
+            using (var connection = new SqlConnection(InforConfig.IpsDatabaseConnectionString))
+            {
+                try
+                {
+                    // Call the query
+                    Logger.Debug(string.Format("Execute SQL query: {0}", coreQuery));
+                    var command = new SqlCommand(coreQuery, connection);
+                    command.Parameters.AddWithValue("@Message", ACMC.Message);
+
+                    // Open connection
+                    connection.Open();
+
+                    // Read data
+                    var reader = command.ExecuteReader();
+
+                    // Create variables to storage the data
+                    var Message = new List<string>();
+
+                    // Get data 
+                    while (reader.Read())
+                    {
+                        // Check if it is NULL or not, if not add it to our variable
+                         if (!(reader["Message"] is DBNull)) Message.Add(Convert.ToString(reader["Message"]));
+                    }
+
+                    // Select query successful
+                    reader.Close();
+
+                    // Display data
+                    var data = new
+                    {
+                        Message
+                    };
+
+                    return TaskResult.Success(data);
+                }
+                catch (Exception e)
+                {
+                    // Log exception
+                    return TaskResult.Failure(e.Message, e.StackTrace);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
     }
 }
