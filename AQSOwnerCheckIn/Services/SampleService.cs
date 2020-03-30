@@ -25,7 +25,7 @@ namespace AQSOwnerCheckIn.Services
     {
         private static readonly ILog Logger = LogManager.GetLogger(typeof(SampleService));
 
-        public static async Task<TaskResult> SampleQuery(SampleController.SearchCriteria s)
+        public static TaskResult SampleQuery(SampleController.SearchCriteria s)
         {
             Logger.Debug(string.Format("Method called."));
 

@@ -265,5 +265,60 @@ namespace AQSOwnerCheckIn.Services
                 }
             }
         }
+
+        public static TaskResult Delete_AlertCustomMessage(KioskCheckInController.AlertCustomMessageCriteria ACMC)
+        {
+            Logger.Debug(string.Format("Method called."));
+
+            // SQL QUERY
+            string coreQuery = "EXEC [KioskCheckIn].[Delete_AlertCustomMessage_Proc] @AlertCustomMessageID ";
+
+            using (var connection = new SqlConnection(InforConfig.IpsDatabaseConnectionString))
+            {
+                try
+                {
+                    // Call the query
+                    Logger.Debug(string.Format("Execute SQL query: {0}", coreQuery));
+                    var command = new SqlCommand(coreQuery, connection);
+                    command.Parameters.AddWithValue("@AlertCustomMessageID", ACMC.AlertCustomMessageID);
+
+                    // Open connection
+                    connection.Open();
+
+                    // Read data
+                    var reader = command.ExecuteReader();
+
+                    // Create variables to storage the data
+                    var AlertCustomMessageID = new List<int>();
+
+                    // Get data 
+                    while (reader.Read())
+                    {
+                        // Check if it is NULL or not, if not add it to our variable
+                        if (!(reader["AlertCustomMessageID"] is DBNull)) AlertCustomMessageID.Add(Convert.ToInt32(reader["AlertCustomMessageID"]));
+                    }
+
+                    // Select query successful
+                    reader.Close();
+
+                    // Display data
+                    var data = new
+                    {
+                        AlertCustomMessageID,
+                    };
+
+                    return TaskResult.Success(data);
+                }
+                catch (Exception e)
+                {
+                    // Log exception
+                    return TaskResult.Failure(e.Message, e.StackTrace);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
     }
 }

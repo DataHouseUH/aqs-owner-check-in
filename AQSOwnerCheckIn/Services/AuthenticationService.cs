@@ -29,12 +29,12 @@ namespace AQSOwnerCheckIn.Services
         private static readonly ILog Logger = LogManager.GetLogger(typeof(AuthenticationService));
 
         // Login method for IPS User accounts.
-        public static async Task<Response> LoginIpsUser(Credentials credentials)
+        public static Response LoginIpsUser(Credentials credentials)
         {
             Logger.Info("Method called.");
 
-            var service = new AccessUserService {Ticket = InforConfig.Ticket};
-            var user = new AccessUser {UserName = credentials.Username};
+            var service = new AccessUserService { Ticket = InforConfig.Ticket };
+            var user = new AccessUser { UserName = credentials.Username };
 
             try
             {

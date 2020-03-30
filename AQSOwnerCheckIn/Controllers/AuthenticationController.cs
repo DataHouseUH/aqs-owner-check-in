@@ -13,22 +13,22 @@ namespace AQSOwnerCheckIn.Controllers
     {
         // Authentication methods
         private static readonly ILog Logger = LogManager.GetLogger(typeof(AuthenticationController));
-        
+
         [HttpPost]
         [ActionName("Login")]
         // Log in user using credentials
-        public async Task<Response> Login([FromBody] Credentials credentials)
+        public Response Login([FromBody] Credentials credentials)
         {
             Logger.Debug("Method called.");
             Logger.Info(string.Format("Login attempt made by username: {0}.", credentials.Username));
 
-            return await AuthenticationService.LoginIpsUser(credentials);
+            return AuthenticationService.LoginIpsUser(credentials);
         }
 
         [HttpGet]
         [ActionName("Logout")]
         // End the user's session
-        public async Task<Response> Logout()
+        public Response Logout()
         {
             Logger.Debug("Method called.");
             var userSession = UserSession.GetCurrent();
@@ -43,7 +43,7 @@ namespace AQSOwnerCheckIn.Controllers
         [HttpGet]
         [ActionName("LoggedInUser")]
         // Get the logged in user's server-side session information. Used also to check if the user is logged in.
-        public async Task<Response> GetLoggedInUser()
+        public Response GetLoggedInUser()
         {
             Logger.Debug("Method called.");
             var userSession = UserSession.GetCurrent();

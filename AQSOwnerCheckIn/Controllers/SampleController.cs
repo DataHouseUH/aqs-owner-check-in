@@ -41,7 +41,7 @@ namespace AQSOwnerCheckIn.Controllers
             {
                 Logger.Info(string.Format("Called by ({0},{1})", user.Username, user.IpsUserKey));
 
-                var taskResult = await SampleService.SampleQuery(s);
+                var taskResult = SampleService.SampleQuery(s);
 
                 if (taskResult.Result.HasFailed)
                 {
