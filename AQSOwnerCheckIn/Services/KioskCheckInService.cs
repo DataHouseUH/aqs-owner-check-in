@@ -320,5 +320,139 @@ namespace AQSOwnerCheckIn.Services
                 }
             }
         }
+
+        //////////////////
+        //// For Kiosk User
+        //////////////////
+        public static TaskResult View_User(KioskCheckInController.UserCriteria UCB)
+        {
+            Logger.Debug(string.Format("Method called."));
+
+            // SQL QUERY
+            string coreQuery = "EXEC [KioskCheckIn].[View_User_Proc] @LastName, @FirstName, @MicrochipID, @Email, @PhoneNumber ";
+
+            using (var connection = new SqlConnection(InforConfig.IpsDatabaseConnectionString))
+            {
+                try
+                {
+                    // Call the query
+                    Logger.Debug(string.Format("Execute SQL query: {0}", coreQuery));
+                    var command = new SqlCommand(coreQuery, connection);
+                    command.Parameters.AddWithValue("@LastName", UCB.LastName);
+                    command.Parameters.AddWithValue("@FirstName", UCB.FirstName);
+                    command.Parameters.AddWithValue("@MicrochipID", UCB.MicrochipID);
+                    command.Parameters.AddWithValue("@Email", UCB.Email);
+                    command.Parameters.AddWithValue("@PhoneNumber", UCB.PhoneNumber);
+
+                    // Open connection
+                    connection.Open();
+
+                    // Read data
+                    var reader = command.ExecuteReader();
+
+                    // Create variables to storage the data
+                    var status = new List<int>();
+                    var error = new List<string>();
+                    var UserID = new List<int>();
+
+                    // Get data 
+                    while (reader.Read())
+                    {
+                        // Check if it is NULL or not, if not add it to our variable
+                        if (!(reader["status"] is DBNull)) status.Add(Convert.ToInt32(reader["status"]));
+                        if (!(reader["error"] is DBNull)) error.Add(Convert.ToString(reader["error"]));
+                        if (!(reader["UserID"] is DBNull)) UserID.Add(Convert.ToInt32(reader["UserID"]));
+                    }
+
+                    // Select query successful
+                    reader.Close();
+
+                    // Display data
+                    var data = new
+                    {
+                        status,
+                        error,
+                        UserID
+                    };
+
+                    return TaskResult.Success(data);
+                }
+                catch (Exception e)
+                {
+                    // Log exception
+                    return TaskResult.Failure(e.Message, e.StackTrace);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        //////////////////
+        //// For Front-End
+        //////////////////
+        public static TaskResult View_FrontDisplay()
+        {
+            Logger.Debug(string.Format("Method called."));
+
+            // SQL QUERY
+            string coreQuery = "EXEC [KioskCheckIn].[View_FrontDisplay_Proc]";
+
+            using (var connection = new SqlConnection(InforConfig.IpsDatabaseConnectionString))
+            {
+                try
+                {
+                    // Call the query
+                    Logger.Debug(string.Format("Execute SQL query: {0}", coreQuery));
+                    var command = new SqlCommand(coreQuery, connection);
+
+                    // Open connection
+                    connection.Open();
+
+                    // Read data
+                    var reader = command.ExecuteReader();
+
+                    // Create variables to storage the data
+                    var PhoneNumber = new List<string>();
+                    var LastName = new List<string>();
+                    var FirstName = new List<string>();
+                    var Status = new List<int>();
+
+                    // Get data 
+                    while (reader.Read())
+                    {
+                        // Check if it is NULL or not, if not add it to our variable
+                        if (!(reader["PhoneNumber"] is DBNull)) PhoneNumber.Add(Convert.ToString(reader["PhoneNumber"]));
+                        if (!(reader["LastName"] is DBNull)) LastName.Add(Convert.ToString(reader["LastName"]));
+                        if (!(reader["FirstName"] is DBNull)) FirstName.Add(Convert.ToString(reader["FirstName"]));
+                        if (!(reader["Status"] is DBNull)) Status.Add(Convert.ToInt32(reader["Status"]));
+                    }
+
+                    // Select query successful
+                    reader.Close();
+
+                    // Display data
+                    var data = new
+                    {
+                        PhoneNumber,
+                        LastName,
+                        FirstName,
+                        Status
+                    };
+
+                    return TaskResult.Success(data);
+                }
+                catch (Exception e)
+                {
+                    // Log exception
+                    return TaskResult.Failure(e.Message, e.StackTrace);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
     }
 }
