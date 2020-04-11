@@ -243,6 +243,36 @@ namespace AQSOwnerCheckIn.Controllers
             throw new HttpResponseException(HttpStatusCode.Unauthorized);
         }
 
+        [HttpPost]
+        // Change name of action. (Match the WebApiConfig)
+        [ActionName("CreateUnQualifiedUser")]
+        public Response CreateUnQualifiedUser([FromBody] UserCriteria UCB)
+        {
+            Logger.Debug("Method called.");
+            var user = UserSession.GetCurrent();
+
+            {
+                // User Securities
+                Logger.Info(string.Format("Called by ({0},{1})", user.Username, user.IpsUserKey));
+
+                // Called the SQL Query
+                var taskResult = KioskCheckInService.Create_UserIsNotQualifiedUser(UCB);
+
+                if (taskResult.Result.HasFailed)
+                {
+                    Logger.Error(string.Format("({0},{1}) [{2}] {3} Stack: {4}", user.Username, user.IpsUserKey, taskResult.Result.Code, taskResult.Result.Message, taskResult.Result.Stack));
+                    Logger.Info("200 Success response sent with failure message.");
+                    return Response.Failure(taskResult.Result.Message);
+                }
+
+                Logger.Info("200 Success response sent.");
+                return Response.Success(taskResult.Data);
+            }
+
+            Logger.Info("401 Unauthorized response sent.");
+            throw new HttpResponseException(HttpStatusCode.Unauthorized);
+        }
+
         //////////////////
         //// For Front Display
         //////////////////
@@ -291,6 +321,125 @@ namespace AQSOwnerCheckIn.Controllers
             throw new HttpResponseException(HttpStatusCode.Unauthorized);
         }
 
+        //////////////////
+        //// For Back Display
+        //////////////////
+        public class BackDisplay
+        {
 
+            [JsonProperty(PropertyName = "BackDisplayID")]
+            public int BackDisplayID { get; set; }
+
+            [JsonProperty(PropertyName = "UserDisplayName")]
+            public string UserDisplayName { get; set; }
+
+            [JsonProperty(PropertyName = "PetName")]
+            public string PetName { get; set; }
+
+            [JsonProperty(PropertyName = "MicroChipID")]
+            public string MicroChipID { get; set; }
+
+            [JsonProperty(PropertyName = "Is_Arrived")]
+            public bool? Is_Arrived { get; set; }
+
+            [JsonProperty(PropertyName = "Is_Inspected")]
+            public bool? Is_Inspected { get; set; }
+
+            [JsonProperty(PropertyName = "Is_Released")]
+            public bool? Is_Released { get; set; }
+
+            [JsonProperty(PropertyName = "Colour")]
+            public string Colour { get; set; }
+        }
+
+        [HttpPost]
+        // Change name of action. (Match the WebApiConfig)
+        [ActionName("ViewBackDisplay")]
+        public Response ViewBackDisplay()
+        {
+            Logger.Debug("Method called.");
+            var user = UserSession.GetCurrent();
+
+            {
+                // User Securities
+                Logger.Info(string.Format("Called by ({0},{1})", user.Username, user.IpsUserKey));
+
+                // Called the SQL Query
+                var taskResult = KioskCheckInService.View_BackDisplay();
+
+                if (taskResult.Result.HasFailed)
+                {
+                    Logger.Error(string.Format("({0},{1}) [{2}] {3} Stack: {4}", user.Username, user.IpsUserKey, taskResult.Result.Code, taskResult.Result.Message, taskResult.Result.Stack));
+                    Logger.Info("200 Success response sent with failure message.");
+                    return Response.Failure(taskResult.Result.Message);
+                }
+
+                Logger.Info("200 Success response sent.");
+                return Response.Success(taskResult.Data);
+            }
+
+            Logger.Info("401 Unauthorized response sent.");
+            throw new HttpResponseException(HttpStatusCode.Unauthorized);
+        }
+
+        [HttpPost]
+        // Change name of action. (Match the WebApiConfig)
+        [ActionName("UpdateBackDisplay")]
+        public Response UpdateBackDisplay([FromBody] BackDisplay BD)
+        {
+            Logger.Debug("Method called.");
+            var user = UserSession.GetCurrent();
+
+            {
+                // User Securities
+                Logger.Info(string.Format("Called by ({0},{1})", user.Username, user.IpsUserKey));
+
+                // Called the SQL Query
+                var taskResult = KioskCheckInService.Update_BackDisplay(BD);
+
+                if (taskResult.Result.HasFailed)
+                {
+                    Logger.Error(string.Format("({0},{1}) [{2}] {3} Stack: {4}", user.Username, user.IpsUserKey, taskResult.Result.Code, taskResult.Result.Message, taskResult.Result.Stack));
+                    Logger.Info("200 Success response sent with failure message.");
+                    return Response.Failure(taskResult.Result.Message);
+                }
+
+                Logger.Info("200 Success response sent.");
+                return Response.Success(taskResult.Data);
+            }
+
+            Logger.Info("401 Unauthorized response sent.");
+            throw new HttpResponseException(HttpStatusCode.Unauthorized);
+        }
+
+        [HttpPost]
+        // Change name of action. (Match the WebApiConfig)
+        [ActionName("ViewBackAlert")]
+        public Response ViewBackAlert()
+        {
+            Logger.Debug("Method called.");
+            var user = UserSession.GetCurrent();
+
+            {
+                // User Securities
+                Logger.Info(string.Format("Called by ({0},{1})", user.Username, user.IpsUserKey));
+
+                // Called the SQL Query
+                var taskResult = KioskCheckInService.View_Alert();
+
+                if (taskResult.Result.HasFailed)
+                {
+                    Logger.Error(string.Format("({0},{1}) [{2}] {3} Stack: {4}", user.Username, user.IpsUserKey, taskResult.Result.Code, taskResult.Result.Message, taskResult.Result.Stack));
+                    Logger.Info("200 Success response sent with failure message.");
+                    return Response.Failure(taskResult.Result.Message);
+                }
+
+                Logger.Info("200 Success response sent.");
+                return Response.Success(taskResult.Data);
+            }
+
+            Logger.Info("401 Unauthorized response sent.");
+            throw new HttpResponseException(HttpStatusCode.Unauthorized);
+        }
     }
 }

@@ -351,16 +351,16 @@ namespace AQSOwnerCheckIn.Services
                     var reader = command.ExecuteReader();
 
                     // Create variables to storage the data
-                    var status = new List<int>();
-                    var error = new List<string>();
+                    var Status = new List<int>();
+                    var Error = new List<string>();
                     var UserID = new List<int>();
 
                     // Get data 
                     while (reader.Read())
                     {
                         // Check if it is NULL or not, if not add it to our variable
-                        if (!(reader["status"] is DBNull)) status.Add(Convert.ToInt32(reader["status"]));
-                        if (!(reader["error"] is DBNull)) error.Add(Convert.ToString(reader["error"]));
+                        if (!(reader["Status"] is DBNull)) Status.Add(Convert.ToInt32(reader["Status"]));
+                        if (!(reader["Error"] is DBNull)) Error.Add(Convert.ToString(reader["Error"]));
                         if (!(reader["UserID"] is DBNull)) UserID.Add(Convert.ToInt32(reader["UserID"]));
                     }
 
@@ -370,8 +370,73 @@ namespace AQSOwnerCheckIn.Services
                     // Display data
                     var data = new
                     {
-                        status,
-                        error,
+                        Status,
+                        Error,
+                        UserID
+                    };
+
+                    return TaskResult.Success(data);
+                }
+                catch (Exception e)
+                {
+                    // Log exception
+                    return TaskResult.Failure(e.Message, e.StackTrace);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public static TaskResult Create_UserIsNotQualifiedUser(KioskCheckInController.UserCriteria UCB)
+        {
+            Logger.Debug(string.Format("Method called."));
+
+            // SQL QUERY
+            string coreQuery = "EXEC [KioskCheckIn].[Create_UserIsnotQualified_Proc] @LastName, @FirstName, @MicrochipID, @Email, @PhoneNumber ";
+
+            using (var connection = new SqlConnection(InforConfig.IpsDatabaseConnectionString))
+            {
+                try
+                {
+                    // Call the query
+                    Logger.Debug(string.Format("Execute SQL query: {0}", coreQuery));
+                    var command = new SqlCommand(coreQuery, connection);
+                    command.Parameters.AddWithValue("@LastName", UCB.LastName);
+                    command.Parameters.AddWithValue("@FirstName", UCB.FirstName);
+                    command.Parameters.AddWithValue("@MicrochipID", UCB.MicrochipID);
+                    command.Parameters.AddWithValue("@Email", UCB.Email);
+                    command.Parameters.AddWithValue("@PhoneNumber", UCB.PhoneNumber);
+
+                    // Open connection
+                    connection.Open();
+
+                    // Read data
+                    var reader = command.ExecuteReader();
+
+                    // Create variables to storage the data
+                    var Status = new List<int>();
+                    var Error = new List<string>();
+                    var UserID = new List<int>();
+
+                    // Get data 
+                    while (reader.Read())
+                    {
+                        // Check if it is NULL or not, if not add it to our variable
+                        if (!(reader["Status"] is DBNull)) Status.Add(Convert.ToInt32(reader["Status"]));
+                        if (!(reader["Error"] is DBNull)) Error.Add(Convert.ToString(reader["Error"]));
+                        if (!(reader["UserID"] is DBNull)) UserID.Add(Convert.ToInt32(reader["UserID"]));
+                    }
+
+                    // Select query successful
+                    reader.Close();
+
+                    // Display data
+                    var data = new
+                    {
+                        Status,
+                        Error,
                         UserID
                     };
 
@@ -414,19 +479,17 @@ namespace AQSOwnerCheckIn.Services
                     var reader = command.ExecuteReader();
 
                     // Create variables to storage the data
-                    var PhoneNumber = new List<string>();
-                    var LastName = new List<string>();
-                    var FirstName = new List<string>();
-                    var Status = new List<int>();
+                    var DisplayID = new List<int>();
+                    var UserDisplayName = new List<string>();
+                    var StatusName = new List<string>();
 
                     // Get data 
                     while (reader.Read())
                     {
                         // Check if it is NULL or not, if not add it to our variable
-                        if (!(reader["PhoneNumber"] is DBNull)) PhoneNumber.Add(Convert.ToString(reader["PhoneNumber"]));
-                        if (!(reader["LastName"] is DBNull)) LastName.Add(Convert.ToString(reader["LastName"]));
-                        if (!(reader["FirstName"] is DBNull)) FirstName.Add(Convert.ToString(reader["FirstName"]));
-                        if (!(reader["Status"] is DBNull)) Status.Add(Convert.ToInt32(reader["Status"]));
+                        if (!(reader["DisplayID"] is DBNull)) DisplayID.Add(Convert.ToInt32(reader["DisplayID"]));
+                        if (!(reader["UserDisplayName"] is DBNull)) UserDisplayName.Add(Convert.ToString(reader["UserDisplayName"]));
+                        if (!(reader["StatusName"] is DBNull)) StatusName.Add(Convert.ToString(reader["StatusName"]));
                     }
 
                     // Select query successful
@@ -435,10 +498,211 @@ namespace AQSOwnerCheckIn.Services
                     // Display data
                     var data = new
                     {
-                        PhoneNumber,
-                        LastName,
-                        FirstName,
-                        Status
+                        DisplayID,
+                        UserDisplayName,
+                        StatusName
+                    };
+
+                    return TaskResult.Success(data);
+                }
+                catch (Exception e)
+                {
+                    // Log exception
+                    return TaskResult.Failure(e.Message, e.StackTrace);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        //////////////////
+        //// For Back-Display
+        //////////////////
+        public static TaskResult View_BackDisplay()
+        {
+            Logger.Debug(string.Format("Method called."));
+
+            // SQL QUERY
+            string coreQuery = "EXEC [KioskCheckIn].[View_BackDisplay_Proc]";
+
+            using (var connection = new SqlConnection(InforConfig.IpsDatabaseConnectionString))
+            {
+                try
+                {
+                    // Call the query
+                    Logger.Debug(string.Format("Execute SQL query: {0}", coreQuery));
+                    var command = new SqlCommand(coreQuery, connection);
+
+                    // Open connection
+                    connection.Open();
+
+                    // Read data
+                    var reader = command.ExecuteReader();
+
+                    // Create variables to storage the data
+                    var BackDisplayID = new List<int>();
+                    var UserDisplayName = new List<string>();
+                    var PetName = new List<string>();
+                    var MicroChipID = new List<string>();
+                    var Is_Arrived = new List<bool>();
+                    var Is_Inspected = new List<bool>();
+                    var Is_Released = new List<bool>();
+                    var Colour = new List<string>();
+
+                    // Get data 
+                    while (reader.Read())
+                    {
+                        // Check if it is NULL or not, if not add it to our variable
+                        if (!(reader["BackDisplayID"] is DBNull)) BackDisplayID.Add(Convert.ToInt32(reader["BackDisplayID"]));
+                        if (!(reader["UserDisplayName"] is DBNull)) UserDisplayName.Add(Convert.ToString(reader["UserDisplayName"]));
+                        if (!(reader["PetName"] is DBNull)) PetName.Add(Convert.ToString(reader["PetName"]));
+                        if (!(reader["MicroChipID"] is DBNull)) MicroChipID.Add(Convert.ToString(reader["MicroChipID"]));
+                        if (!(reader["Is_Arrived"] is DBNull)) Is_Arrived.Add(Convert.ToBoolean(reader["Is_Arrived"]));
+                        if (!(reader["Is_Inspected"] is DBNull)) Is_Inspected.Add(Convert.ToBoolean(reader["Is_Inspected"]));
+                        if (!(reader["Is_Released"] is DBNull)) Is_Released.Add(Convert.ToBoolean(reader["Is_Released"]));
+                        if (!(reader["Colour"] is DBNull)) Colour.Add(Convert.ToString(reader["Colour"]));
+                    }
+
+                    // Select query successful
+                    reader.Close();
+
+                    // Display data
+                    var data = new
+                    {
+                        BackDisplayID,
+                        UserDisplayName,
+                        PetName,
+                        MicroChipID,
+                        Is_Arrived,
+                        Is_Inspected,
+                        Is_Released,
+                        Colour
+                    };
+
+                    return TaskResult.Success(data);
+                }
+                catch (Exception e)
+                {
+                    // Log exception
+                    return TaskResult.Failure(e.Message, e.StackTrace);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public static TaskResult Update_BackDisplay(KioskCheckInController.BackDisplay BC)
+        {
+            Logger.Debug(string.Format("Method called."));
+
+            // SQL QUERY
+            string coreQuery = "EXEC [KioskCheckIn].[Update_BackDisplay_Proc] @BackDisplayID, @Is_Arrived, @Is_Inspected, @Is_Released ";
+
+            using (var connection = new SqlConnection(InforConfig.IpsDatabaseConnectionString))
+            {
+                try
+                {
+                       
+                    // Call the query
+                    Logger.Debug(string.Format("Execute SQL query: {0}", coreQuery));
+                    var command = new SqlCommand(coreQuery, connection);
+                    command.Parameters.AddWithValue("@BackDisplayID", BC.BackDisplayID);
+                    command.Parameters.AddWithValue("@Is_Arrived", BC.Is_Arrived ?? Convert.DBNull);
+                    command.Parameters.AddWithValue("@Is_Inspected", BC.Is_Inspected ?? Convert.DBNull);
+                    command.Parameters.AddWithValue("@Is_Released", BC.Is_Released ?? Convert.DBNull);
+                    // Open connection
+                    connection.Open();
+
+                    // Read data
+                    var reader = command.ExecuteReader();
+
+                    // Create variables to storage the data
+                    var Status = new List<int>();
+                    var Error = new List<string>();
+
+                    // Get data 
+                    while (reader.Read())
+                    {
+                        // Check if it is NULL or not, if not add it to our variable
+                        if (!(reader["Status"] is DBNull)) Status.Add(Convert.ToInt32(reader["Status"]));
+                        if (!(reader["Error"] is DBNull)) Error.Add(Convert.ToString(reader["Error"]));
+                    }
+
+                    // Select query successful
+                    reader.Close();
+
+                    // Display data
+                    var data = new
+                    {
+                        Status,
+                        Error
+                    };
+
+                    return TaskResult.Success(data);
+                }
+                catch (Exception e)
+                {
+                    // Log exception
+                    return TaskResult.Failure(e.Message, e.StackTrace);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public static TaskResult View_Alert()
+        {
+            Logger.Debug(string.Format("Method called."));
+
+            // SQL QUERY
+            string coreQuery = "EXEC [KioskCheckIn].[View_Alert_Proc]";
+
+            using (var connection = new SqlConnection(InforConfig.IpsDatabaseConnectionString))
+            {
+                try
+                {
+                    // Call the query
+                    Logger.Debug(string.Format("Execute SQL query: {0}", coreQuery));
+                    var command = new SqlCommand(coreQuery, connection);
+
+                    // Open connection
+                    connection.Open();
+
+                    // Read data
+                    var reader = command.ExecuteReader();
+
+                    // Create variables to storage the data
+                    var AlertID = new List<int>();
+                    var BackDisplayID = new List<int>();
+                    var Message = new List<string>();
+                    var TimeCreated = new List<DateTime>();
+
+                    // Get data 
+                    while (reader.Read())
+                    {
+                        // Check if it is NULL or not, if not add it to our variable
+                        if (!(reader["AlertID"] is DBNull)) AlertID.Add(Convert.ToInt32(reader["AlertID"]));
+                        if (!(reader["BackDisplayID"] is DBNull)) BackDisplayID.Add(Convert.ToInt32(reader["BackDisplayID"]));
+                        if (!(reader["Message"] is DBNull)) Message.Add(Convert.ToString(reader["Message"]));
+                        if (!(reader["TimeCreated"] is DBNull)) TimeCreated.Add(Convert.ToDateTime(reader["TimeCreated"]));
+                    }
+
+                    // Select query successful
+                    reader.Close();
+
+                    // Display data
+                    var data = new
+                    {
+                        AlertID,
+                        BackDisplayID,
+                        Message,
+                        TimeCreated
                     };
 
                     return TaskResult.Success(data);

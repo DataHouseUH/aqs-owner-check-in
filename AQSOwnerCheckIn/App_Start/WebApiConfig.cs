@@ -110,6 +110,13 @@ namespace AQSOwnerCheckIn
                 sessionBehavior: SessionStateBehavior.ReadOnly
             );
 
+            config.Routes.MapHttpRoute(
+                name: "CreateUnQualifiedUser",
+                routeTemplate: "api/v1/KioskCheckIn/Create",
+                defaults: new { controller = "KioskCheckIn", action = "CreateUnQualifiedUser" },
+                sessionBehavior: SessionStateBehavior.ReadOnly
+            );
+
             //////////////////////////////
             /// Front Display
             ///////////////////////////////
@@ -121,6 +128,30 @@ namespace AQSOwnerCheckIn
                 sessionBehavior: SessionStateBehavior.ReadOnly
             );
 
+            //////////////////////////////
+            /// Back Display
+            ///////////////////////////////
+
+            config.Routes.MapHttpRoute(
+                name: "ViewBackDisplay",
+                routeTemplate: "api/v1/BackDisplay/View",
+                defaults: new { controller = "KioskCheckIn", action = "ViewBackDisplay" },
+                sessionBehavior: SessionStateBehavior.ReadOnly
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "UpdateBackDisplay",
+                routeTemplate: "api/v1/BackDisplay/Update",
+                defaults: new { controller = "KioskCheckIn", action = "UpdateBackDisplay" },
+                sessionBehavior: SessionStateBehavior.ReadOnly
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "ViewBackAlert",
+                routeTemplate: "api/v1/BackDisplay/Alert",
+                defaults: new { controller = "KioskCheckIn", action = "ViewBackAlert" },
+                sessionBehavior: SessionStateBehavior.ReadOnly
+            );
             // Uncomment the following line of code to enable query support for actions with an IQueryable or IQueryable<T> return type.
             // To avoid processing unexpected or malicious queries, use the validation settings on QueryableAttribute to validate incoming queries.
             // For more information, visit http://go.microsoft.com/fwlink/?LinkId=279712.
