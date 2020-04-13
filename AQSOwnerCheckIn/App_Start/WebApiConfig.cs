@@ -99,6 +99,13 @@ namespace AQSOwnerCheckIn
                 sessionBehavior: SessionStateBehavior.ReadOnly
             );
 
+            config.Routes.MapHttpRoute(
+                name: "SubmitAlertCustomMessage",
+                routeTemplate: "api/v1/MasterAlertCustomMessageTbl/Submit",
+                defaults: new { controller = "KioskCheckIn", action = "SubmitAlertCustomMessage" },
+                sessionBehavior: SessionStateBehavior.ReadOnly
+            );
+
             //////////////////////////////
             /// Owner Users
             ///////////////////////////////
@@ -152,6 +159,14 @@ namespace AQSOwnerCheckIn
                 defaults: new { controller = "KioskCheckIn", action = "ViewBackAlert" },
                 sessionBehavior: SessionStateBehavior.ReadOnly
             );
+
+            config.Routes.MapHttpRoute(
+                name: "UpdateBackAlert",
+                routeTemplate: "api/v1/BackDisplay/UpdateAlert",
+                defaults: new { controller = "KioskCheckIn", action = "UpdateBackAlert" },
+                sessionBehavior: SessionStateBehavior.ReadOnly
+            );
+
             // Uncomment the following line of code to enable query support for actions with an IQueryable or IQueryable<T> return type.
             // To avoid processing unexpected or malicious queries, use the validation settings on QueryableAttribute to validate incoming queries.
             // For more information, visit http://go.microsoft.com/fwlink/?LinkId=279712.
