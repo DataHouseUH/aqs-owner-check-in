@@ -571,6 +571,66 @@ namespace AQSOwnerCheckIn.Services
             }
         }
 
+
+        public static TaskResult Confirmation_FrontDisplay(KioskCheckInController.FrontDisplay FD)
+        {
+            Logger.Debug(string.Format("Method called."));
+
+            // SQL QUERY
+            string coreQuery = "EXEC [KioskCheckIn].[View_Confirmation_Proc] @UserID, @Is_Qualified";
+
+            using (var connection = new SqlConnection(InforConfig.IpsDatabaseConnectionString))
+            {
+                try
+                {
+
+                    // Call the query
+                    Logger.Debug(string.Format("Execute SQL query: {0}", coreQuery));
+                    var command = new SqlCommand(coreQuery, connection);
+                    command.Parameters.AddWithValue("@UserID", FD.UserID);
+                    command.Parameters.AddWithValue("@Is_Qualified", FD.Is_Qualified);
+                    // Open connection
+                    connection.Open();
+
+                    // Read data
+                    var reader = command.ExecuteReader();
+
+                    // Create variables to storage the data
+                    var DisplayID = new List<int>();
+                    var UserDisplayName = new List<string>();
+
+                    // Get data 
+                    while (reader.Read())
+                    {
+                        // Check if it is NULL or not, if not add it to our variable
+                        if (!(reader["DisplayID"] is DBNull)) DisplayID.Add(Convert.ToInt32(reader["DisplayID"]));
+                        if (!(reader["UserDisplayName"] is DBNull)) UserDisplayName.Add(Convert.ToString(reader["UserDisplayName"]));
+                    }
+
+                    // Select query successful
+                    reader.Close();
+
+                    // Display data
+                    var data = new
+                    {
+                        DisplayID,
+                        UserDisplayName
+                    };
+
+                    return TaskResult.Success(data);
+                }
+                catch (Exception e)
+                {
+                    // Log exception
+                    return TaskResult.Failure(e.Message, e.StackTrace);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
         //////////////////
         //// For Back-Display
         //////////////////

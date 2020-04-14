@@ -135,6 +135,13 @@ namespace AQSOwnerCheckIn
                 sessionBehavior: SessionStateBehavior.ReadOnly
             );
 
+            config.Routes.MapHttpRoute(
+                name: "ConfirmationFrontDisplay",
+                routeTemplate: "api/v1/FrontDisplay/Confirmation",
+                defaults: new { controller = "KioskCheckIn", action = "ConfirmationFrontDisplay" },
+                sessionBehavior: SessionStateBehavior.ReadOnly
+            );
+
             //////////////////////////////
             /// Back Display
             ///////////////////////////////

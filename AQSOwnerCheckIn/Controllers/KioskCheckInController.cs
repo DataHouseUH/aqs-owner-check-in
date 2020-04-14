@@ -318,6 +318,12 @@ namespace AQSOwnerCheckIn.Controllers
 
             [JsonProperty(PropertyName = "PhoneNumber")]
             public string PhoneNumber { get; set; }
+
+            [JsonProperty(PropertyName = "UserID")]
+            public int UserID { get; set; }
+
+            [JsonProperty(PropertyName = "Is_Qualified")]
+            public bool Is_Qualified { get; set; }
         }
 
         [HttpPost]
@@ -350,6 +356,35 @@ namespace AQSOwnerCheckIn.Controllers
             throw new HttpResponseException(HttpStatusCode.Unauthorized);
         }
 
+        [HttpPost]
+        // Change name of action. (Match the WebApiConfig)
+        [ActionName("ConfirmationFrontDisplay")]
+        public Response ConfirmationFrontDisplay([FromBody] FrontDisplay FD)
+        {
+            Logger.Debug("Method called.");
+            var user = UserSession.GetCurrent();
+
+            {
+                // User Securities
+                Logger.Info(string.Format("Called by ({0},{1})", user.Username, user.IpsUserKey));
+
+                // Called the SQL Query
+                var taskResult = KioskCheckInService.Confirmation_FrontDisplay(FD);
+
+                if (taskResult.Result.HasFailed)
+                {
+                    Logger.Error(string.Format("({0},{1}) [{2}] {3} Stack: {4}", user.Username, user.IpsUserKey, taskResult.Result.Code, taskResult.Result.Message, taskResult.Result.Stack));
+                    Logger.Info("200 Success response sent with failure message.");
+                    return Response.Failure(taskResult.Result.Message);
+                }
+
+                Logger.Info("200 Success response sent.");
+                return Response.Success(taskResult.Data);
+            }
+
+            Logger.Info("401 Unauthorized response sent.");
+            throw new HttpResponseException(HttpStatusCode.Unauthorized);
+        }
         //////////////////
         //// For Back Display
         //////////////////
