@@ -417,6 +417,9 @@ namespace AQSOwnerCheckIn.Controllers
 
             [JsonProperty(PropertyName = "AlertID")]
             public string AlertID { get; set; }
+
+            [JsonProperty(PropertyName = "Is_Completed")]
+            public bool? Is_Completed { get; set; }
         }
 
         [HttpPost]

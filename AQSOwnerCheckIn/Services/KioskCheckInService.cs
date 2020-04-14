@@ -663,8 +663,8 @@ namespace AQSOwnerCheckIn.Services
                     var Is_Arrived = new List<bool>();
                     var Is_Inspected = new List<bool>();
                     var Is_Released = new List<bool>();
+                    var Is_Completed = new List<bool>();
                     var Colour = new List<string>();
-
                     // Get data 
                     while (reader.Read())
                     {
@@ -676,6 +676,7 @@ namespace AQSOwnerCheckIn.Services
                         if (!(reader["Is_Arrived"] is DBNull)) Is_Arrived.Add(Convert.ToBoolean(reader["Is_Arrived"]));
                         if (!(reader["Is_Inspected"] is DBNull)) Is_Inspected.Add(Convert.ToBoolean(reader["Is_Inspected"]));
                         if (!(reader["Is_Released"] is DBNull)) Is_Released.Add(Convert.ToBoolean(reader["Is_Released"]));
+                        if (!(reader["Is_Completed"] is DBNull)) Is_Completed.Add(Convert.ToBoolean(reader["Is_Completed"]));
                         if (!(reader["Colour"] is DBNull)) Colour.Add(Convert.ToString(reader["Colour"]));
                     }
 
@@ -692,6 +693,7 @@ namespace AQSOwnerCheckIn.Services
                         Is_Arrived,
                         Is_Inspected,
                         Is_Released,
+                        Is_Completed,
                         Colour
                     };
 
@@ -714,7 +716,7 @@ namespace AQSOwnerCheckIn.Services
             Logger.Debug(string.Format("Method called."));
 
             // SQL QUERY
-            string coreQuery = "EXEC [KioskCheckIn].[Update_BackDisplay_Proc] @BackDisplayID, @Is_Arrived, @Is_Inspected, @Is_Released ";
+            string coreQuery = "EXEC [KioskCheckIn].[Update_BackDisplay_Proc] @BackDisplayID, @Is_Arrived, @Is_Inspected, @Is_Released, @Is_Completed ";
 
             using (var connection = new SqlConnection(InforConfig.IpsDatabaseConnectionString))
             {
@@ -728,6 +730,7 @@ namespace AQSOwnerCheckIn.Services
                     command.Parameters.AddWithValue("@Is_Arrived", BC.Is_Arrived ?? Convert.DBNull);
                     command.Parameters.AddWithValue("@Is_Inspected", BC.Is_Inspected ?? Convert.DBNull);
                     command.Parameters.AddWithValue("@Is_Released", BC.Is_Released ?? Convert.DBNull);
+                    command.Parameters.AddWithValue("@Is_Completed", BC.Is_Completed ?? Convert.DBNull);
                     // Open connection
                     connection.Open();
 
