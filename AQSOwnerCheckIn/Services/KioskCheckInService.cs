@@ -383,7 +383,7 @@ namespace AQSOwnerCheckIn.Services
             Logger.Debug(string.Format("Method called."));
 
             // SQL QUERY
-            string coreQuery = "EXEC [KioskCheckIn].[View_User_Proc] @LastName, @FirstName, @MicrochipID, @Email, @PhoneNumber ";
+            string coreQuery = "EXEC [KioskCheckIn].[View_User_Proc] @LastName, @FirstName, @PetName, @MicrochipID, @Email, @PhoneNumber ";
 
             using (var connection = new SqlConnection(InforConfig.IpsDatabaseConnectionString))
             {
@@ -394,6 +394,7 @@ namespace AQSOwnerCheckIn.Services
                     var command = new SqlCommand(coreQuery, connection);
                     command.Parameters.AddWithValue("@LastName", UCB.LastName);
                     command.Parameters.AddWithValue("@FirstName", UCB.FirstName);
+                    command.Parameters.AddWithValue("@PetName", UCB.PetName);
                     command.Parameters.AddWithValue("@MicrochipID", UCB.MicrochipID);
                     command.Parameters.AddWithValue("@Email", UCB.Email);
                     command.Parameters.AddWithValue("@PhoneNumber", UCB.PhoneNumber);
@@ -535,6 +536,7 @@ namespace AQSOwnerCheckIn.Services
                     // Create variables to storage the data
                     var DisplayID = new List<int>();
                     var UserDisplayName = new List<string>();
+                    var PetName = new List<string>();
                     var StatusName = new List<string>();
 
                     // Get data 
@@ -543,6 +545,7 @@ namespace AQSOwnerCheckIn.Services
                         // Check if it is NULL or not, if not add it to our variable
                         if (!(reader["DisplayID"] is DBNull)) DisplayID.Add(Convert.ToInt32(reader["DisplayID"]));
                         if (!(reader["UserDisplayName"] is DBNull)) UserDisplayName.Add(Convert.ToString(reader["UserDisplayName"]));
+                        if (!(reader["PetName"] is DBNull)) PetName.Add(Convert.ToString(reader["PetName"]));
                         if (!(reader["StatusName"] is DBNull)) StatusName.Add(Convert.ToString(reader["StatusName"]));
                     }
 
@@ -554,6 +557,7 @@ namespace AQSOwnerCheckIn.Services
                     {
                         DisplayID,
                         UserDisplayName,
+                        PetName,
                         StatusName
                     };
 

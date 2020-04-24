@@ -232,6 +232,9 @@ namespace AQSOwnerCheckIn.Controllers
             [JsonProperty(PropertyName = "FirstName")]
             public string FirstName { get; set; }
 
+            [JsonProperty(PropertyName = "PetName")]
+            public string PetName { get; set; }
+
             [JsonProperty(PropertyName = "MicrochipID")]
             public string MicrochipID { get; set; }
 
