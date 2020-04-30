@@ -423,6 +423,9 @@ namespace AQSOwnerCheckIn.Controllers
 
             [JsonProperty(PropertyName = "Is_Completed")]
             public bool? Is_Completed { get; set; }
+
+            [JsonProperty(PropertyName = "ApplicationNumber")]
+            public bool? ApplicationNumber { get; set; }
         }
 
         [HttpPost]

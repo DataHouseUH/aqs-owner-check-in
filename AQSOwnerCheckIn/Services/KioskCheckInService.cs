@@ -669,6 +669,7 @@ namespace AQSOwnerCheckIn.Services
                     var Is_Released = new List<bool>();
                     var Is_Completed = new List<bool>();
                     var Colour = new List<string>();
+                    var ApplicationNumber = new List<string>();
                     // Get data 
                     while (reader.Read())
                     {
@@ -682,6 +683,7 @@ namespace AQSOwnerCheckIn.Services
                         if (!(reader["Is_Released"] is DBNull)) Is_Released.Add(Convert.ToBoolean(reader["Is_Released"]));
                         if (!(reader["Is_Completed"] is DBNull)) Is_Completed.Add(Convert.ToBoolean(reader["Is_Completed"]));
                         if (!(reader["Colour"] is DBNull)) Colour.Add(Convert.ToString(reader["Colour"]));
+                        if (!(reader["ApplicationNumber"] is DBNull)) ApplicationNumber.Add(Convert.ToString(reader["ApplicationNumber"]));
                     }
 
                     // Select query successful
@@ -698,7 +700,8 @@ namespace AQSOwnerCheckIn.Services
                         Is_Inspected,
                         Is_Released,
                         Is_Completed,
-                        Colour
+                        Colour,
+                        ApplicationNumber
                     };
 
                     return TaskResult.Success(data);
