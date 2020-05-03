@@ -29,68 +29,75 @@ namespace AQSOwnerCheckIn.Services
         private static readonly ILog Logger = LogManager.GetLogger(typeof(AuthenticationService));
 
         // Login method for IPS User accounts.
-        public static Response LoginIpsUser(Credentials credentials)
+        public static async Task<Response> LoginIpsUser(Credentials credentials)
         {
             Logger.Info("Method called.");
 
             var service = new AccessUserService { Ticket = InforConfig.Ticket };
             var user = new AccessUser { UserName = credentials.Username };
 
-            try
+            if (InforConfig.AllowedUsers.Contains(credentials.Username, StringComparer.OrdinalIgnoreCase))
             {
-                var ticket = "";
-
-                WebServiceResult res = service.LoadByID(ref user);
-
-                if (res.HasFailed)
+                try
                 {
-                    Logger.Warn(string.Format("Incorrect username specified for login attempt: {0}", credentials.Username));
-                    return Response.Failure("Failed to authenticate.");
+                    var ticket = "";
+
+                    WebServiceResult res = service.LoadByID(ref user);
+
+                    if (res.HasFailed)
+                    {
+                        Logger.Warn(string.Format("Incorrect username specified for login attempt: {0}", credentials.Username));
+                        return Response.Failure("Failed to authenticate.");
+                    }
+
+                    bool passwordsMatch = false;
+                    res = service.ComparePassword(ref user, credentials.Password, out passwordsMatch);
+
+                    if (res.HasFailed || !passwordsMatch)
+                    {
+                        Logger.Warn(string.Format("Incorrect password specified for login attempt: {0}", credentials.Username));
+                        return Response.Failure("Failed to authenticate.");
+                    }
+
+                    // Set authorization code to password for logging user in.
+                    user.AuthorizationCode = credentials.Password;
+
+                    res = service.GetTicket(ref user, out ticket);
+
+                    if (res.HasFailed)
+                    {
+                        Logger.Warn(string.Format("Unable to get ticket for user: {0}", credentials.Username));
+                        return Response.Failure("Failed to authenticate.");
+                    }
+
+                    // Login was a success
+                    Logger.Info(string.Format("IPS User {0} logged in successfully.", credentials.Username));
+
+                    var userSession = new UserSession();
+
+                    userSession.Username = credentials.Username;
+                    userSession.Ticket = ticket;
+                    userSession.IpsUserKey = user.UserKey;
+                    userSession.IsAdmin = credentials.Username.IndexOf("Admin", StringComparison.OrdinalIgnoreCase) >= 0;
+
+                    HttpContext.Current.Session.Add("user", userSession);
+
+                    var data = new
+                    {
+                        username = credentials.Username,
+                        isAdmin = userSession.IsAdmin
+                    };
+
+                    return Response.Success(data);
                 }
-
-                bool passwordsMatch = false;
-                res = service.ComparePassword(ref user, credentials.Password, out passwordsMatch);
-
-                if (res.HasFailed || !passwordsMatch)
+                catch (Exception e)
                 {
-                    Logger.Warn(string.Format("Incorrect password specified for login attempt: {0}", credentials.Username));
-                    return Response.Failure("Failed to authenticate.");
+                    Logger.Error(e.Message);
                 }
-
-                // Set authorization code to password for logging user in.
-                user.AuthorizationCode = credentials.Password;
-
-                res = service.GetTicket(ref user, out ticket);
-
-                if (res.HasFailed)
-                {
-                    Logger.Warn(string.Format("Unable to get ticket for user: {0}", credentials.Username));
-                    return Response.Failure("Failed to authenticate.");
-                }
-
-                // Login was a success
-                Logger.Info(string.Format("IPS User {0} logged in successfully.", credentials.Username));
-
-                var userSession = new UserSession();
-
-                userSession.Username = credentials.Username;
-                userSession.Ticket = ticket;
-                userSession.IpsUserKey = user.UserKey;
-
-                HttpContext.Current.Session.Add("user", userSession);
-
-                var data = new
-                {
-                    username = credentials.Username,
-                    access = userSession.Access,
-                    defaultState = userSession.DefaultState
-                };
-
-                return Response.Success(data);
             }
-            catch (Exception e)
+            else
             {
-                Logger.Error(e.Message);
+                Logger.Warn(string.Format("An invalid user was used to access the application {0}.", credentials.Username));
             }
 
             return Response.Failure("Failed to authenticate.");

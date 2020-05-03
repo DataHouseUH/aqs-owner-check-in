@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Linq;
 using System.Web.Configuration;
 using Hansen.Core.Security.WebServices;
 using Hansen.Core.WebServices.Proxy.Client;
@@ -18,11 +19,13 @@ namespace AQSOwnerCheckIn
 
         public static string Ticket = "";
         public static string IpsDatabaseConnectionString = "";
+        public static string[] AllowedUsers;
 
         public static void LoadConfigs()
         {
             Logger.Debug("Method called.");
             IpsDatabaseConnectionString = ConfigurationManager.ConnectionStrings["IPSConnection"].ConnectionString;
+            AllowedUsers = WebConfigurationManager.AppSettings["AllowedUsers"].Split(',').Select(s => s.Trim()).ToArray();
         }
 
         public static void Register()
