@@ -17,12 +17,12 @@ namespace AQSOwnerCheckIn.Controllers
         [HttpPost]
         [ActionName("Login")]
         // Log in user using credentials
-        public Response Login([FromBody] Credentials credentials)
+        public async Task<Response> Login([FromBody] Credentials credentials)
         {
             Logger.Debug("Method called.");
             Logger.Info(string.Format("Login attempt made by username: {0}.", credentials.Username));
 
-            return AuthenticationService.LoginIpsUser(credentials);
+            return await AuthenticationService.LoginIpsUser(credentials);
         }
 
         [HttpGet]
